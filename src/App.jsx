@@ -8,16 +8,30 @@ const initialItems = [
 ];
 
 export default function App() {
-  const [item, setItem] = useState([]);
-  const handleItem = (item) => {
+  const [item, setItem] = useState(initialItems);
+
+  const handleAddItem = (item) => {
     setItem((items) => [...items, item]);
   };
+  const handleDeleteItem = (id) => {
+   const itemDelete = item.filter(item => item.id !== id);
+   setItem(itemDelete)
+  };
+
+
+      // const checkedItem = item.map((item) => item.id === id ? item.packed === !item.packed : item)
+    // setItem(checkedItem);
+  const handleToggle = (id) => {
+    console.log('id',id);
+    setItem(item => item.map((item) => item.id === id ? {...item,packed: !item.packed} : item))
+  }
+
   return (
     <div className="app">
       <Logo />
-      <Form onAddItem={handleItem} />
-      <PackingList item={item} />
-      <Stats />
+      <Form onAddItem={handleAddItem} />
+      <PackingList item={item} onDeleteItem={handleDeleteItem} onToggle={handleToggle}/>
+      <Stats item={item}/>
     </div>
   );
 }
@@ -28,7 +42,6 @@ function Logo() {
 function Form({ onAddItem }) {
   const [description, setDescription] = useState("");
   const [quantity, setQuantity] = useState(1);
-  console.log("handleItem", onAddItem);
   const handleSubmit = (e) => {
     e.preventDefault();
     const newItem = {
@@ -59,29 +72,33 @@ function Form({ onAddItem }) {
     </form>
   );
 }
-function PackingList({ item }) {
+function PackingList({ item,onDeleteItem,onToggle }) {
   return (
     <div className="list">
       <ul>
         {item.map((item, key) => (
-          <Item item={item} key={item.id} />
+          <Item item={item} key={item.id} onDeleteItem={onDeleteItem} onToggle={onToggle}/>
         ))}
       </ul>
     </div>
   );
 }
 
-function Item({ item }) {
+function Item({ item, onDeleteItem,onToggle }) {
   return (
     <li>
+      <input type="checkbox" value={item.packed} onChange={()=>onToggle(item.id)}/>
       <span style={item.packed ? { textDecoration: "line-through" } : {}}>
         {item.quantity} {item.description}
       </span>
-      <button>X</button>
+      <button onClick={()=>onDeleteItem(item.id)} style={{color:"red"}}>X</button>
     </li>
   );
 }
-function Stats() {
+function Stats({item}) {
+
+
+  const numItem = item.length;
   return (
     <footer className="stats">
       <em>You have X item on your list, and you already packed x(X%)</em>
