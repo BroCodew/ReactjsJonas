@@ -1,10 +1,18 @@
-import React from 'react'
-import ReactDOM from 'react-dom/client'
-import App from './App.jsx'
-import './index.css'
+import React from "react";
+import ReactDOM from "react-dom/client";
+import StarRating from "./StarRating";
+import { ChakraProvider } from "@chakra-ui/react";
 
-ReactDOM.createRoot(document.getElementById('root')).render(
+// import "./index.css";
+// import App from "./App.jsx";
+
+ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-)
+    {/* <App /> */}
+    <ChakraProvider>
+      <StarRating maxRating={5} />
+      <StarRating maxRating={10} />
+      <StarRating />
+    </ChakraProvider>
+  </React.StrictMode>
+);
