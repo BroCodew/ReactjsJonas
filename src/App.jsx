@@ -222,6 +222,8 @@ export default function App() {
   const [movies, setMovies] = useState(tempMovieData);
   const [watched, setWatched] = useState(tempWatchedData);
 
+  fetch(`https://api.themovied`).then((res)=>res.json()).then((data)=> setMovies(data))
+
   return (
     <>
       <NavBar>

@@ -1,34 +1,33 @@
-.translate-container {
-  background-color: #fff;
-  height: 150px;
-  width: 550px;
-  box-shadow: 1px 2px 8px 1px #888888;
-  padding-top: 3px;
-  padding-left: 15px;
-  display: flex !important;
+// .translate-container {
+//   background-color: #fff;
+//   height: 150px;
+//   width: 550px;
+//   box-shadow: 1px 2px 8px 1px #888888;
+//   padding-top: 3px;
+//   padding-left: 15px;
+//   display: flex !important;
 
-  .header-change {
-    justify-content: center;
-    align-items: center;
-    display: flex;
-    .change-language {
-      .language-select {
-        border: none;
-        width: 80px;
-        select {
-          -webkit-appearance: none;
-          -moz-appearance: none;
-          appearance: none;
-          padding: 5px;
-        }
-        .language-select::placeholder {
-          text-indent: 10px; /* Kiểu chữ của placeholder, ví dụ: nghiêng (italic) */
-        }
-        option_option1 {
-          color: red;
-          margin: 10px;
-        }
-      }
-    }
-  }
-}
+//   .header-change {
+//     justify-content: center;
+//     align-items: center;
+//     display: flex;
+//     .change-language {
+//       .language-select {
+//         border: none;
+//         width: 80px;
+//         select {
+//           -webkit-appearance: none;
+//           -moz-appearance: none;
+//           appearance: none;
+//           padding: 5px;
+//         }
+//         .language-select::placeholder {
+//           text-indent: 10px; /* Kiểu chữ của placeholder, ví dụ: nghiêng (italic) */
+//         }
+//         option_option1 {
+//           margin: 10px;
+//         }
+//       }
+//     }
+//   }
+// }
