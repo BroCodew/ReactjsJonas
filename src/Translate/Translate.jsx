@@ -7,11 +7,14 @@ import {images} from "../Translate/images/index";
 
 const Translate = () => {
     const [translateText, setTranslateText] = useState();
-    const [intoLanguage, setIntoLanguage] = useState("vi");
+    const [intoLanguage, setIntoLanguage] = useState("zh");
+    const [isPaused, setIsPaused] = useState(false);
+    const [utterance, setUtterance] = useState(null);
+
 
     const getResultTranslate = async () => {
         const response = await fetch(
-            `https://translate.googleapis.com/translate_a/single?client=dict-chrome-ex&sl=auto&tl=${intoLanguage}&hl=en-US&dt=t&dt=bd&dj=1&source=bubble&q=how`
+            `https://translate.googleapis.com/translate_a/single?client=dict-chrome-ex&sl=auto&tl=${intoLanguage}&hl=en-US&dt=t&dt=bd&dj=1&source=bubble&q=people`
         );
         const result = await response.json();
         const data = result?.sentences[0].trans;
@@ -27,191 +30,235 @@ const Translate = () => {
         setIntoLanguage(e.target.value);
     };
 
+
+    //speech text
+
+    useEffect(() => {
+        const synth = window.speechSynthesis;
+        const u = new SpeechSynthesisUtterance(translateText);
+
+        setUtterance(u);
+
+        return () => {
+            synth.cancel();
+        };
+    }, [translateText]);
+
+    const handlePlay = () => {
+        const synth = window.speechSynthesis;
+
+        if (isPaused) {
+            synth.resume();
+        }
+
+        synth.speak(utterance);
+
+        setIsPaused(false);
+    };
+
+    const handlePause = () => {
+        const synth = window.speechSynthesis;
+
+        synth.pause();
+
+        setIsPaused(true);
+    };
+
+    const handleStop = () => {
+        const synth = window.speechSynthesis;
+
+        synth.cancel();
+
+        setIsPaused(false);
+    };
+
+
     const TypeLanguage = [
-        "Abkhazian",
-        "Afar",
-        "Afrikaans",
-        "Akan",
-        "Albanian",
-        "Amharic",
-        "Arabic",
-        "Aragonese",
-        "Armenian",
-        "Assamese",
-        "Avaric",
-        "Avestan",
-        "Aymara",
-        "Azerbaijani",
-        "Bambara",
-        "Bashkir",
-        "Basque",
-        "Belarusian",
-        "Bengali",
-        "Bislama",
-        "Bosnian",
-        "Breton",
-        "Bulgarian",
-        "Burmese",
-        "Bulgarian",
-        "Catalan",
-        "Bulgarian",
-        "Chamorro",
-        "Chechen",
-        "Chichewa",
-        "Chinese",
-        "Church Slavonic",
-        "Chuvash",
-        "Cornish",
-        "Corsican",
-        "Cree",
-        "Czech",
-        "Danish",
-        "Divehi",
-        "Dutch",
-        "Danish",
-        "Dzongkha",
-        "English",
-        "Danish",
-        "Esperanto",
-        "Estonian",
-        "Ewe",
-        "Faroese",
-        "Fijian",
-        "Finnish",
-        "French",
-        "Western Frisian",
-        "Fulah",
-        "Gaelic",
-        "Galician",
-        "Ganda",
-        "Georgian",
-        "German",
-        "Greek",
-        "Kalaallisut",
-        "Guarani",
-        "Gujarati",
-        "Haitian",
-        "Hausa",
-        "Hebrew",
-        "Herero",
-        "Hindi",
-        "Hiri Motu",
-        "Hungarian",
-        "Icelandic",
-        "Ido",
-        "Igbo",
-        "Indonesian",
-        "Interlingua",
-        "Inuktitut",
-        "Inupiaq",
-        "Irish",
-        "Italian",
-        "Japanese",
-        "Javanese",
-        "Kannada",
-        "Kanuri",
-        "Kashmiri",
-        "Kazakh",
-        "Central Khmer",
-        "Kikuyu",
-        "Kinyarwanda",
-        "Kirghiz",
-        "Komi",
-        "Kongo",
-        "Korean",
-        "Kuanyama",
-        "Kurdish",
-        "Lao",
-        "Latin",
-        "Latvian",
-        "Limburgan",
-        "Lingala",
-        "Lithuanian",
-        "Luba-Katanga",
-        "Luxembourgish",
-        "Macedonian",
-        "Malagasy",
-        "Malay",
-        "Malayalam",
-        "Maltese",
-        "Manx",
-        "Maori",
-        "Marathi",
-        "Marshallese",
-        "Mongolian",
-        "Nauru",
-        "Navajo",
-        "North Ndebele",
-        "South Ndebele",
-        "Ndonga",
-        "Nepali",
-        "Norwegian",
-        "Norwegian Bokmål",
-        "Norwegian Nynorsk",
-        "Sichuan Yi",
-        "Occitan",
-        "Ojibwa",
-        "Oriya",
-        "Oromo",
-        "Ossetian",
-        "Pali",
-        "Pashto",
-        "Persian",
-        "Polish",
-        "Portuguese",
-        "Punjabi",
-        "Quechua",
-        "Romanian",
-        "Romansh",
-        "Rundi",
-        "Russian",
-        "Northern Sami",
-        "Samoan",
-        "Sango",
-        "Sanskrit",
-        "Sardinian",
-        "Serbian",
-        "Shona",
-        "Sindhi",
-        "Sinhala",
-        "Slovak",
-        "Slovenian",
-        "Somali",
-        "Southern Sotho",
-        "Spanish",
-        "Sundanese",
-        "Swati",
-        "Swedish",
-        "Tagalog",
-        "Tahitian",
-        "Tajik",
-        "Tamil",
-        "Tatar",
-        "Telugu",
-        "Thai",
-        "Tibetan",
-        "Tigrinya",
-        "Tonga ",
-        "Tsonga",
-        "Tswana",
-        "Turkish",
-        "Turkmen",
-        "Twi",
-        "Uighur",
-        "Ukrainian",
-        "Urdu",
-        "Uzbek",
-        "Venda",
-        "Vietnamese",
-        "Volapük",
-        "Walloon",
-        "Welsh",
-        "Wolof",
-        "Xhosa",
-        "Yiddish",
-        "Yoruba",
-        "Zhuang",
-        "Zulu",
+        {
+            ab:"Abkhazian",
+            aa:"Afar",
+            af:"Afrikaans",
+            ak:"Akan",
+            sq:"Albanian",
+            am:"Amharic",
+            ar:"Arabic",
+            an:"Aragonese",
+            hy:"Armenian",
+            as:"Assamese",
+            av:"Avaric",
+            ae:"Avestan",
+            ay:"Aymara",
+            az:"Azerbaijani",
+            bm:"Bambara",
+            ba:"Bashkir",
+            eu:"Basque",
+            be:"Belarusian",
+            bn:"Bengali",
+            bi:"Bislama",
+            bs:"Bosnian",
+            br:"Breton",
+            bg:"Bulgarian",
+            my:"Burmese",
+            ca:"Catalan",
+            ch:"Chamorro",
+            ce:"Chechen",
+            ny:"Chichewa",
+            zh:"Chinese",
+            cu:"Church Slavonic",
+            cv:"Chuvash",
+            kw:"Cornish",
+            co:"Corsican",
+            cr:"Cree",
+            hr:"Croatian",
+            cs:"Czech",
+            da:"Danish",
+            dv:"Divehi",
+            nl:"Dutch",
+            dz:"Dzongkha",
+            en:"English",
+            eo:"Esperanto",
+            et:"Estonian",
+            ee:"Ewe",
+            fo:"Faroese",
+            fj:"Fijian",
+            fi:"Finnish",
+            fr:"French",
+            fy:"Western Frisian",
+            ff:"Fulah",
+            gd:"Gaelic",
+            gl:"Galician",
+            lq:"Ganda",
+            ka:"Georgian",
+            de:"German",
+            el:"Greek",
+            kl:"Kalaallisut",
+            gn:"Guarani",
+            gu:"Gujarati",
+            ht:"Haitian",
+            ha:"Hausa",
+            he:"Hebrew",
+            hz:"Herero",
+            hi:"Hindi",
+            ho:"Hiri Motu",
+            hu:"Hungarian",
+            is:"Icelandic",
+            io:"Ido",
+            ig:"Igbo",
+            id:"Indonesian",
+            ia:"Interlingua",
+            ie:"Interlingue",
+            iu:"Inuktitut",
+            ik:"Inupiaq",
+            ga:"Irish",
+            it:"Italian",
+            ja:"Japanese",
+            jv:"Javanese",
+            kn:"Kannada",
+            kr:"Kanuri",
+            ks:"Kashmiri",
+            kk:"Kazakh",
+            km:"Central Khmer",
+            ki:"Kikuyu",
+            rw:"Kinyarwanda",
+            ky:"Kirghiz",
+            kv:"Komi",
+            kg:"Kongo",
+            ko:"Korean",
+            kj:"Kuanyama",
+            ku:"Kurdish",
+            lo:"Lao",
+            la:"Latin",
+            lv:"Latvian",
+            li:"Limburgan",
+            ln:"Lingala",
+            lt:"Lithuanian",
+            lu:"Luba-Katanga",
+            lb:"Luxembourgish",
+            mk:"Macedonian",
+            mg:"Malagasy",
+            ms:"Malay",
+            ml:"Malayalam",
+            mt:"Maltese",
+            gv:"Manx",
+            mi:"Maori",
+            mr:"Marathi",
+            mh:"Marshallese",
+            mn:"Mongolian",
+            na:"Nauru",
+            nv:"Navajo",
+            nd:"North Ndebele",
+            nr:"South Ndebele",
+            ng:"Ndonga",
+            ne:"Nepali",
+            no:"Norwegian",
+            nb:"Norwegian Bokmål",
+            nn:"Norwegian Nynorsk",
+            ii:"Sichuan Yi",
+            oc:"Occitan",
+            oj:"Ojibwa",
+            or:"Oriya",
+            om:"Oromo",
+            os:"Ossetian",
+            pi:"Pali",
+            ps:"Pashto",
+            fa:"Persian",
+            pl:"Polish",
+            pt:"Portuguese",
+            pa:"Punjabi",
+            qu:"Quechua",
+            ro:"Romanian",
+            rm:"Romansh",
+            rn:"Rundi",
+            ru:"Russian",
+            se:"Northern Sami",
+            sm:"Samoan",
+            sg:"Sango",
+            sa:"Sanskrit",
+            sc:"Sardinian",
+            sr:"Serbian",
+            sn:"Shona",
+            sd:"Sindhi",
+            si:"Sinhala",
+            sk:"Slovak",
+            sl:"Slovenian",
+            so:"Somali",
+            st:"Southern Sotho",
+            es:"Spanish",
+            su:"Sundanese",
+            sw:"Swahili",
+            ss:"Swahili",
+            sv:"Swedish",
+            tl:"Tagalog",
+            ty:"Tahitian",
+            tg:"Tajik",
+            ta:"Tamil",
+            tt:"Tatar",
+            te:"Telugu",
+            th:"Thai",
+            bo:"Tibetan",
+            ti:"Tigrinya",
+            to:"Tonga",
+            ts:"Tsonga",
+            tn:"Tswana",
+            tr:"Turkish",
+            tk:"Turkmen",
+            tw:"Twi",
+            ug:"Uighur",
+            uk:"Ukrainian",
+            ur:"Urdu",
+            uz:"Uzbek",
+            ve:"Venda",
+            vi:"VN",
+            vo:"Volapük",
+            wa:"Walloon",
+            cy:"Welsh",
+            wo:"Wolof",
+            xh:"Xhosa",
+            yi:"Yiddish",
+            yo:"Yoruba",
+            za:"Zhuang",
+            zu:"Zulu",
+        }
     ]
     return (
         <div>
@@ -224,16 +271,13 @@ const Translate = () => {
                             <select
                                 placeholder="ENG"
                                 className={styles.languageSelect}
-                                style={{color: "#000", fontWeight: 700}}
-                                // onChange={(e) => handleSelectLanguage(e)}
+                                style={{color: "#000", fontWeight: 600}}
                                 onChange={(e) => handleSelectLanguage(e)}
                                 value={intoLanguage}
                             >
-                                <option style={{marginBottom: 20}} value="eng">
-                                    ENG
-                                </option>
-                                <option value="vi">VN</option>
-                                <option value="cn">CN</option>
+                                {TypeLanguage.map((item) => Object.entries(item).map(([key,value])=>
+                                    <option key={key} value={key}>{value}</option>
+                                ))}
                             </select>
                         </div>
                     </div>
@@ -248,13 +292,12 @@ const Translate = () => {
                 </div>
 
                 <div className="translate-body" style={{display: "flex"}}>
-                    {/* <div>{translateText}</div> */}
                     <p>{translateText}</p>
-                    <div>
-                        <img src={images.Speaker} style={{width: 18, height: 18}}/>
+                    <div onClick={handlePlay}>
+                        <img alt={""} src={images.Speaker} style={{width: 18, height: 18}}/>
                     </div>
                     <div>
-                        <img src={images.Copy} style={{width: 18, height: 18}}/>
+                        <img alt={""} src={images.Copy} style={{width: 18, height: 18}}/>
                     </div>
                     {/* <img src={images.Copy} style={{ width: 18, height: 18 }} /> */}
                 </div>
