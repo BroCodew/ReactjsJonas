@@ -1,23 +1,22 @@
 .translateContainer {
   background-color: #fff;
-  height: 150px;
-  width: 550px;
+  height: 200px;
+  width: 450px;
   box-shadow: 1px 2px 8px 1px #888888;
-  padding-top: 10px;
   margin-top: 50px;
+  border-radius: 5px;
   .translateHeader {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 20px;
-    padding-bottom: 10px;
-    border-bottom: 1px solid #9ba3ac94;
+    border-bottom: 1px solid #ffcb08;
     .headerChange {
       display: flex;
       align-items: center;
-      padding-left: 20px;
+      background-color: #ffcb08;
+
       .changeInto {
-        font-size: 13px;
+        font-size: 16px;
         padding-left: 8px;
         font-weight: 500;
       }
@@ -26,12 +25,20 @@
         margin-left: 3px;
         min-width: 50px;
         position: relative;
-        border: 2px solid #000;
         border-radius: 5px;
+        border:none;
         select{
           outline: none;
           white-space: nowrap;
           text-overflow: ellipsis;
+          border: none;
+          background-color: #ffcb08;
+          width: 100px;
+          padding: 7px 2px;
+          cursor: pointer;
+          option{
+            cursor: pointer;
+          }
         }
       }
     }
@@ -40,8 +47,16 @@
       align-items: center;
     }
   }
-  .translate-body {
+  .translateBody{
     display: flex;
     flex-direction: column;
+    padding: 20px 10px;
+    p:first-child::first-letter {
+      text-transform: uppercase;
+    }
+    .bodyTranslateText {
+      font-size: 15px;
+      font-weight: 700;
+    }
   }
 }

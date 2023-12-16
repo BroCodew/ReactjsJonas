@@ -1,4 +1,5 @@
 import { useState } from "react";
+import './app.css'
 
 /* eslint-disable no-unused-vars */
 
