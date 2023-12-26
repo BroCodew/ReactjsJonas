@@ -1,10 +1,10 @@
 import "./index.css";
-import App from "./App.jsx";
 import React from "react";
 import ReactDOM from "react-dom/client";
+import Translate from "./Translate/Translate";
 import { ChakraProvider } from "@chakra-ui/react";
 
-// import Translate from "./Translate/Translate";
+// import App from "./App.jsx";
 
 // import StarRating from "./StarRating";
 
@@ -20,12 +20,12 @@ ReactDOM.createRoot(document.getElementById("root")).render(
     {/*   <StarRating color="red" size={24} maxRating={5} />*/}
     {/* </ChakraProvider>*/}
 
-    <ChakraProvider>
+    {/* <ChakraProvider>
       <App />
-    </ChakraProvider>
+    </ChakraProvider> */}
 
-    {/*<ChakraProvider>*/}
-    {/*  <Translate />*/}
-    {/*</ChakraProvider>*/}
+    <ChakraProvider>
+     <Translate />
+    </ChakraProvider>
   </React.StrictMode>
 );

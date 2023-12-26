@@ -1,10 +1,7 @@
-"[{"domain":".facebook.com","expirationDate":1736398330.205963,"hostOnly":false,"httpOnly":true,"name":"sb","path":"/","sameSite":"no_restriction","secure":true,"session":false,"storeId":"0","value":"SS9PZR4H9YpW0G7pgFEHXWgs"},
-{"domain":".facebook.com","expirationDate":1733365827.127,"hostOnly":false,"httpOnly":false,"name":"datr","path":"/","sameSite":"unspecified","secure":false,"session":false,"storeId":"0","value":"SS9PZYqNyaQ8Wgxg8cL3Mtdd"},
-{"domain":".facebook.com","hostOnly":false,"httpOnly":false,"name":"usida","path":"/","sameSite":"no_restriction","secure":true,"session":true,"storeId":"0","value":"eyJ2ZXIiOjEsImlkIjoiQXM1ODYwcTF0ejRlZ3MiLCJ0aW1lIjoxNzAxODM3NDk0fQ%3D%3D"},
-{"domain":".facebook.com","expirationDate":1702443164,"hostOnly":false,"httpOnly":false,"name":"wd","path":"/","sameSite":"lax","secure":true,"session":false,"storeId":"0","value":"1920x923"},
-{"domain":".facebook.com","expirationDate":1702443104.641397,"hostOnly":false,"httpOnly":false,"name":"locale","path":"/","sameSite":"no_restriction","secure":true,"session":false,"storeId":"0","value":"vi_VN"},
-{"domain":".facebook.com","expirationDate":1733374330.206029,"hostOnly":false,"httpOnly":false,"name":"c_user","path":"/","sameSite":"no_restriction","secure":true,"session":false,"storeId":"0","value":"100054281226202"},
-{"domain":".facebook.com","expirationDate":1733374330.206061,"hostOnly":false,"httpOnly":true,"name":"xs","path":"/","sameSite":"no_restriction","secure":true,"session":false,"storeId":"0","value":"2%3A5nXIcrlUo-jHCw%3A2%3A1701838328%3A-1%3A8014"},
-{"domain":".facebook.com","expirationDate":1709614340.834086,"hostOnly":false,"httpOnly":true,"name":"m_page_voice","path":"/","sameSite":"no_restriction","secure":true,"session":false,"storeId":"0","value":"100054281226202"},
-{"domain":".facebook.com","expirationDate":1709614362.36573,"hostOnly":false,"httpOnly":true,"name":"fr","path":"/","sameSite":"no_restriction","secure":true,"session":false,"storeId":"0","value":"1F33uS5zsyxxDW5EO.AWVLNgmjVcR1CcsCU1-gEPEUObs.Blb_qv.xm.AAA.0.0.Blb_4Z.AWX_Pv6Tm78"},
-{"domain":".facebook.com","hostOnly":false,"httpOnly":false,"name":"presence","path":"/","sameSite":"unspecified","secure":true,"session":true,"storeId":"0","value":"C%7B%22t3%22%3A%5B%5D%2C%22utc3%22%3A1701838369639%2C%22v%22%3A1%7D"}]"
+let a = 10;
+let b = a;
+
+b++;
+
+console.log(a);
+console.log(b);
