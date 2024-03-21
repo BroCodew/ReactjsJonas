@@ -1,4 +1,3 @@
-import "./index.scss";
 import { useState } from "react";
 
 /* eslint-disable no-unused-vars */
