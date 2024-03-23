@@ -1,10 +1,12 @@
 import React from 'react'
 import TodoList from './TodoList/index.tsx'
+import AuthContext from './Auth/index.tsx'
 
 const HomeWork = () => {
   return (
     <div>
-      <TodoList />
+      {/* <TodoList /> */}
+      <AuthContext />
     </div>
   )
 }

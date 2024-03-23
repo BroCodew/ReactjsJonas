@@ -4,6 +4,7 @@ import "./index.scss"
 import FormSimple from './FormSimple'
 import TableAntd from './TableAntd'
 import PaginationSimple from './PaginationSimple'
+import MultipleForm from './MultipleForm'
 const FormAntd = () => {
 
 
@@ -11,7 +12,8 @@ const FormAntd = () => {
     <div className='container'>
       {/* <FormSimple /> */}
       {/* <TableAntd /> */}
-      <PaginationSimple />
+      {/* <PaginationSimple /> */}
+      <MultipleForm />
     </div>
   )
 }

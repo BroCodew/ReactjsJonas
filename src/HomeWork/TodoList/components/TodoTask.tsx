@@ -5,6 +5,8 @@ import { Button, Input } from 'antd';
 const todoReducer = (state, action) => {
   switch (action.type) {
     case "addTodo":
+      console.log("state", state);
+
       return [...state, { id: state.length + 1, name: action.name }];
     case "deleteTodo":
       const updateTodo = state.filter(item => item.id !== action.id)
@@ -68,7 +70,7 @@ const TodoTask = () => {
       <Input value={item} onChange={(e) => setItem(e.target.value)} />
       <Button onClick={handleAddTodo}>Add Todo</Button>
       {state.map(item =>
-        <div style={{ display: "flex", alignItems: "center", marginRight: "10px" }}>
+        <div className='flex'>
           {editId === item.id
             ? <Input value={saveValue} onChange={(e) => setSaveValue(e.target.value)} /> :
             <p style={{ marginRight: "10px" }}>
