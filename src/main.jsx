@@ -5,7 +5,11 @@ import ReactDOM from "react-dom/client";
 // import { ChakraProvider } from "@chakra-ui/react";
 // import FormAntd from "./FormAntd/index"
 // import TimePicker from "./TimePicker/index.tsx";
-import HomeWork from "./HomeWork/index.tsx";
+// import HomeWork from "./HomeWork/index.tsx";
+// import AdvancedCss from "./AdvancedCss/index.tsx";
+import Tailwind from "./Tailwind/index.tsx";
+
+
 // import App from "./App.jsx";
 
 // import StarRating from "./StarRating";
@@ -35,6 +39,8 @@ ReactDOM.createRoot(document.getElementById("root")).render(
             <TimePicker />
         </ChakraProvider> */}
 
-        <HomeWork />
+        {/* <HomeWork /> */}
+        {/* <AdvancedCss /> */}
+        <Tailwind />
     </React.StrictMode>
 );
