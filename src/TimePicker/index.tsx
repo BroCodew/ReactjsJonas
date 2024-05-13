@@ -22,7 +22,7 @@ const TimePicker = () => {
   }
 
   const handleEditTask = (id) => {
-    const task = tasks.find(item => item.id === id)
+    const task = tasks.find(item => item.id === id);
     setEditingId(id)
     setEditValue(task.name)
   }
@@ -32,11 +32,10 @@ const TimePicker = () => {
       if (item.id === id) {
         return { ...item, name: editValue }
       }
-      return item;
-    }
-    )
-    setTasks(updateTask)
+      return item
+    })
     setEditingId(null)
+    setTasks(updateTask)
   }
 
   return (

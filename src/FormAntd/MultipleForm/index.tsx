@@ -9,7 +9,10 @@ const MultipleForm = () => {
   return (
     <Form onFinish={onFinish}
       onFinishFailed={(error) => console.log({ error })}
-      labelCol={{ span: 10 }} wrapperCol={{ span: 14 }} autoComplete='off' >
+      layout='vertical'
+      style={{ width: "100%" }}
+      // className='w-full'z
+      labelCol={{ span: 20 }} wrapperCol={{ span: 24 }} autoComplete='off' >
       <Form.Item name="fullName" label="Full Name"
         rules={[
           {
@@ -57,7 +60,7 @@ const MultipleForm = () => {
           { min: 6 },
           {
             validator: (_, value): any =>
-              value && value.includes("A") ? Promise.resolve : Promise.reject("Password does not match critea")
+              value && value.includes("A") ? Promise.resolve() : Promise.reject("Password does not match critea")
           }
         ]}
         hasFeedback
@@ -116,7 +119,7 @@ const MultipleForm = () => {
         rules={[
           {
             validator: (_, value): any =>
-              value ? Promise.resolve : Promise.reject("Please agreement")
+              value ? Promise.resolve() : Promise.reject("Please agreement")
           }
         ]}
       >

@@ -2,13 +2,14 @@ import "./index.css";
 import "./output.css"
 import React from "react";
 import ReactDOM from "react-dom/client";
-// import { ChakraProvider } from "@chakra-ui/react";
+import { ChakraProvider } from "@chakra-ui/react";
 // import FormAntd from "./FormAntd/index"
-// import TimePicker from "./TimePicker/index.tsx";
+import TimePicker from "./TimePicker/index.tsx";
 // import HomeWork from "./HomeWork/index.tsx";
 // import AdvancedCss from "./AdvancedCss/index.tsx";
 import Tailwind from "./Tailwind/index.tsx";
 
+import FormAntd from "./FormAntd/index";
 
 // import App from "./App.jsx";
 
@@ -28,9 +29,10 @@ ReactDOM.createRoot(document.getElementById("root")).render(
         {/* <ChakraProvider>
             <EvonDev/>
         </ChakraProvider> */}
-        {/* <ChakraProvider>
+
+        <ChakraProvider>
             <FormAntd/>
-        </ChakraProvider> */}
+        </ChakraProvider>
 
         {/* <ChakraProvider>
       <App />
@@ -41,6 +43,6 @@ ReactDOM.createRoot(document.getElementById("root")).render(
 
         {/* <HomeWork /> */}
         {/* <AdvancedCss /> */}
-        <Tailwind />
+        {/* <Tailwind /> */}
     </React.StrictMode>
 );
