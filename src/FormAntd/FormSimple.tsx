@@ -1,5 +1,4 @@
 import { Form, Input, Button } from 'antd';
-import React from 'react'
 
 const FormSimple = () => {
   const handleFinish = (e) => {

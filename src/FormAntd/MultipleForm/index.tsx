@@ -1,4 +1,3 @@
-import React from 'react'
 import { Form, Button, Checkbox, DatePicker, Input, Select, AutoComplete } from 'antd'
 
 const MultipleForm = () => {
@@ -59,8 +58,9 @@ const MultipleForm = () => {
           },
           { min: 6 },
           {
-            validator: (_, value): any =>
-              value && value.includes("A") ? Promise.resolve() : Promise.reject("Password does not match critea")
+            validator: (_, value) => {
+                return value && value.includes("A") ? Promise.resolve() : Promise.reject("Password does not match critea");
+            }
           }
         ]}
         hasFeedback
